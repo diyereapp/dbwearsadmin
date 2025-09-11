@@ -29,7 +29,7 @@ const AdminHeader = () => {
           />*/}
           <a    href="/"
             className="hover:text-primary"
-            style={{ color: "black", fontWeight: "900", fontSize: "20px" }}> DIYERE</a>
+            style={{ color: "black", fontWeight: "900", fontSize: "20px" }}> DBWEARS</a>
         </div>
 
         {/* Desktop Navigation */}
