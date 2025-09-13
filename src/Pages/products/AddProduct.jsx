@@ -535,12 +535,22 @@ const handleSubmit = async () => {
     // } else if (decorationMethods) {
     //   formData.append("decorationMethods", decorationMethods);
     // }
+// if (Array.isArray(decorationMethods) && decorationMethods.length > 0) {
+//   decorationMethods.forEach((method, index) => {
+//     formData.append(`decorationMethods[${index}][name]`, method.name);
+//     formData.append(`decorationMethods[${index}][note]`, method.note || "");
+//   });
+// }
+
 if (Array.isArray(decorationMethods) && decorationMethods.length > 0) {
-  decorationMethods.forEach((method, index) => {
-    formData.append(`decorationMethods[${index}][name]`, method.name);
-    formData.append(`decorationMethods[${index}][note]`, method.note || "");
-  });
+  decorationMethods
+    .filter((method) => method.name && method.name.trim() !== "")
+    .forEach((method, index) => {
+      formData.append(`decorationMethods[${index}][name]`, method.name);
+      formData.append(`decorationMethods[${index}][note]`, method.note || "");
+    });
 }
+
 
     if (Array.isArray(features) && features.length > 0) {
       features.forEach((feature) => formData.append("features", feature));
