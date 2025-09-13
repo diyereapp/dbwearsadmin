@@ -22,7 +22,7 @@ import EditProduct from "./Pages/products/EditProduct";
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <Login/>,
+  
     element: <Dashboard />,
   },
 
