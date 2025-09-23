@@ -27,6 +27,9 @@ const AddProduct = () => {
   const [minimumQuantity, setMinimumQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+const [isBestSeller, setIsBestSeller] = useState(false);
+const [isTrending, setIsTrending] = useState(false);
+const [isFeatured, setIsFeatured] = useState(false);
 
 const [decorationMethods, setDecorationMethods] = useState([
   { name: "", note: "" },
@@ -584,6 +587,10 @@ if (Array.isArray(decorationMethods) && decorationMethods.length > 0) {
     if (supportingFile) {
       formData.append("supportingFile", supportingFile);
     }
+    // ✅ Product flags (booleans)
+    formData.append("isBestSeller", isBestSeller ? "true" : "false");
+    formData.append("isTrending", isTrending ? "true" : "false");
+    formData.append("isFeatured", isFeatured ? "true" : "false");
 
     // 🔍 Debug: show what’s being sent
     for (let [key, value] of formData.entries()) {
@@ -902,6 +909,37 @@ if (Array.isArray(decorationMethods) && decorationMethods.length > 0) {
 />
 
         </div>
+<div className="mb-4">
+  <label className="block mb-2 font-medium">Product Highlights</label>
+  <div className="flex gap-4">
+    <label className="flex items-center gap-2">
+      <input
+        type="checkbox"
+        checked={isBestSeller}
+        onChange={(e) => setIsBestSeller(e.target.checked)}
+      />
+      Best Seller
+    </label>
+
+    <label className="flex items-center gap-2">
+      <input
+        type="checkbox"
+        checked={isTrending}
+        onChange={(e) => setIsTrending(e.target.checked)}
+      />
+      Trending
+    </label>
+
+    <label className="flex items-center gap-2">
+      <input
+        type="checkbox"
+        checked={isFeatured}
+        onChange={(e) => setIsFeatured(e.target.checked)}
+      />
+      Featured
+    </label>
+  </div>
+</div>
 
         {/* Submit Button */}
         {/*} <div className="flex justify-end">
